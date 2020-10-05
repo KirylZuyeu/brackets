@@ -1,15 +1,14 @@
 module.exports = function check(str, bracketsConfig) {
     let items = bracketsConfig.map( item => item.join(''));
-    let string = str;
 
-    function rebase(string) {
+    function rebase(str) {
         for (let i =0; i < items.length; i++) {
-            if (string.includes(items[i])) {
-                string = string.replace(items[i], '');
-                return rebase(string);
-            } else if (!string.includes(items[i]) && string.length == 0) {
+            if (str.includes(items[i])) {
+                str = str.replace(items[i], '');
+                return rebase(str);
+            } else if (!str.includes(items[i]) && str.length == 0) {
                 return true;
-            } else if (!string.includes(items[i]) && string.length < 0) {
+            } else if (!str.includes(items[i]) && str.length < 0) {
                 return false;
             }
         }
